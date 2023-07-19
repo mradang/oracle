@@ -35,7 +35,7 @@ class Oracle
     {
         $stmt = oci_parse($this->conn, $sql);
         foreach ($params as $key => $value) {
-            oci_bind_by_name($stmt, ":$key", $value);
+            oci_bind_by_name($stmt, ":$key", $params[$key]);
         }
         $n = null;
         if (oci_execute($stmt)) {
@@ -61,7 +61,7 @@ class Oracle
     {
         $stmt = oci_parse($this->conn, $sql);
         foreach ($params as $key => $value) {
-            oci_bind_by_name($stmt, ":$key", $value);
+            oci_bind_by_name($stmt, ":$key", $params[$key]);
         }
         $ret = oci_execute($stmt);
         oci_free_statement($stmt);
